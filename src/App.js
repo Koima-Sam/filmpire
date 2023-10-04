@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import Search from './search.svg'
 import "./App.css";
 import MovieCard from "./MovieCard";
-const API_URL = "http://www.omdbapi.com?apikey=b6003d8a";
+const apiUrl = 'https://www.omdbapi.com/?apikey=b6003d8a&s=Meg';
+
+// Then, use `apiUrl` in your fetch or XMLHttpRequest request
+
 
 function App() {
   const [movies,setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   // 2cedc0e5
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
+    const response = await fetch(`${apiUrl}&s=${title}`);
     const data = await response.json();
     setMovies(data.Search);
   };
